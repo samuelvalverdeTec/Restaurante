@@ -1,9 +1,11 @@
 package salon;
 
 public class App {
+	
+	public static Controller controlador;
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		controlador = new Controller();
 
 	}
 
