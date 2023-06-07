@@ -1,4 +1,4 @@
-package cocina;
+package salon;
 
 public class BurgerBasic extends Burger {
 

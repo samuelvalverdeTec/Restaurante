@@ -1,4 +1,4 @@
-package cocina;
+package salon;
 
 import java.util.ArrayList;
 
