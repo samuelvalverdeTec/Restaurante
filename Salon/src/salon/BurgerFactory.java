@@ -9,7 +9,7 @@ public class BurgerFactory {
 		Burger burger = null;
 
 		if (type.equals("Basica")) {
-			burger = new Burger(specs);
+			burger = new BurgerBasic();
 		} else if (type.equals("POO")) {
 			burger = new BurgerPOO(specs);
 		} else if (type.equals("Triple con Bacon")) {
