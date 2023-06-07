@@ -10,6 +10,10 @@ public class Burger {
 	String salsa;
 	ArrayList<String> ingredientes = new ArrayList<String>();
 	
+	public Burger() {
+		
+	}
+	
 	public Burger(ArrayList<String> specs) {
 		
 		this.ingredientes = specs;
