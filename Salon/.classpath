@@ -6,7 +6,5 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/Cocina"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/Simulacion"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
