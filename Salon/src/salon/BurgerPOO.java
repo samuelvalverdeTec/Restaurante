@@ -13,6 +13,7 @@ public class BurgerPOO extends Burger {
 		this.queso = "Cheddar";
 		this.salsa = "Mayo";
 		
+		this.precio = 2500;
 	}
 
 }

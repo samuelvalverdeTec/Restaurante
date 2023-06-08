@@ -14,8 +14,10 @@ import javax.swing.JPanel;
 public class Interfaz implements Constants{
 	
 	JFrame frame;
+	JFrame frameOrden;
 	JPanel panelMesas;
 	JPanel panel;
+	JPanel panelOrden;
 	JButton mesas[][];
 	Salon salon;
 	
@@ -55,9 +57,19 @@ public class Interfaz implements Constants{
 		Mesa mesaAct = null;
 		for(int f = 0; f < salon.mesas.size(); f++){
         	mesaAct = salon.mesas.get(f);
-        	mesaAct.refrescar(panel);
+        	mesaAct.refrescar(/*panel*/);
 	    }
 	}
+	
+	/*public void ordenar(int pNumMesa) {		
+		Mesa mesaAct = null;
+		for(int f = 0; f < salon.mesas.size(); f++){
+        	mesaAct = salon.mesas.get(f);
+        	mesaAct.ordenar();
+	    }
+		this.frameOrden = new JFrame("Orden Mesa " + pNumMesa);
+		this.panelOrden = new JPanel();
+	}*/
 
 
 

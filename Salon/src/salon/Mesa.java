@@ -3,9 +3,12 @@ package salon;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import javax.swing.JOptionPane;
 
 public class Mesa implements ActionListener{
 	
@@ -20,6 +23,7 @@ public class Mesa implements ActionListener{
 	
 	public Mesa(int pNumMesa) {
 		this.setNumMesa(pNumMesa);
+		this.setOrden(new Orden(this.getNumMesa()));
 		this.boton = new JButton("Mesa: " + this.getNumMesa());
 		//this.boton.addActionListener(this);
         //this.boton.setActionCommand("abrir");
@@ -31,7 +35,7 @@ public class Mesa implements ActionListener{
         this.botonFacturar.setActionCommand("liberar");
 	}
 	
-	public void refrescar(JPanel panel) {
+	public void refrescar(/*JPanel panel*/) {
 		/*if(this.abierta) {
 			if(!this.desplegado) {
 				panel.add(botonOrdenar);
@@ -53,6 +57,29 @@ public class Mesa implements ActionListener{
 			this.boton.setBackground(Color.GREEN);
 		}
 	}
+	
+	public void ordenar() {
+		this.setOcupada(true);
+		ArrayList<String> specs = new ArrayList<String>();
+		String ingrediente = "";
+		String orden = JOptionPane.showInputDialog(null, "Hamburguesa a ordenar: ", "Orden Mesa " + this.getNumMesa(), 1);
+		//System.out.println(orden);
+		for(int i = 0; i < 3; i++) {
+			ingrediente = JOptionPane.showInputDialog(null, "Ingrediente extra: ", "Ingredientes", 1);
+			//System.out.println(ingrediente);
+			specs.add(ingrediente);
+		}
+		//String ingrediente = JOptionPane.showInputDialog(null, "Ingrediente extra: ", "Ingredientes", 1);
+		this.setOrden(this.getOrden().crearOrden(orden, specs));
+		
+	}
+	
+	public void facturar() {
+		this.setOcupada(false);
+		this.setOrden(null);
+		JOptionPane.showMessageDialog(null, "Precio total de la orden: " + this.orden.getPrecio(), "Factura Mesa " + this.getNumMesa(), 1, null);
+	}
+
 	
 	public void setNumMesa(int pNumMesa) {
 		this.numMesa = pNumMesa;
@@ -87,11 +114,13 @@ public class Mesa implements ActionListener{
         }
         else*/ if(e.getActionCommand().equals("ocupar")){
     		this.botonOrdenar.setActionCommand("ocupar");
-            this.setOcupada(true);
+            //this.setOcupada(true);
+            ordenar();
         }
         else if(e.getActionCommand().equals("liberar")){
         	this.botonFacturar.setActionCommand("liberar");
-        	this.setOcupada(false);
+        	//this.setOcupada(false);
+        	facturar();
         }
 	}
 
