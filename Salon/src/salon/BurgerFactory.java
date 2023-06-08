@@ -3,6 +3,10 @@ package salon;
 import java.util.ArrayList;
 
 public class BurgerFactory {
+	
+	public BurgerFactory() {
+		
+	}
 
 	public Burger crearBurger(String type, ArrayList<String> specs) {
 		

@@ -13,6 +13,7 @@ public class BurgerHotChicken extends Burger {
 		this.queso = "Cheddar";
 		this.salsa = "Especial";
 		
+		this.precio = 2000;
 	}
 
 }

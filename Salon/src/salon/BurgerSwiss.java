@@ -13,6 +13,7 @@ public class BurgerSwiss extends Burger {
 		this.queso = "Provolone";
 		this.salsa = "Mayo";
 		
+		this.precio = 3000;
 	}
 
 }

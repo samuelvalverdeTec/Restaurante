@@ -9,6 +9,8 @@ public class BurgerBasic extends Burger {
 		this.queso = "Cheddar";
 		this.salsa = "Salsa de Tomate";
 		
+		this.precio = 1000;
+		
 	}
 	
 }
