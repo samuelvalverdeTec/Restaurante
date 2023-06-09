@@ -44,6 +44,7 @@ public class ClientSalon implements Runnable{
                 		//output.writeObject(ordenAct);
                         output.flush();
                         mesaAct.enviar = false;
+                        this.ordenEnviada(numMesa);
                 	}
             	}
             	/*if(boton.activo != m.estado) {
@@ -75,6 +76,12 @@ public class ClientSalon implements Runnable{
             System.out.println(e);
         }
     }
+	
+	public void ordenEnviada(int pNumMesa) {
+		System.out.println("--------------------------");
+		System.out.println("Enviada Orden Mesa " + pNumMesa);
+		System.out.println("--------------------------");
+	}
 	
 	public void run() {
 		conectar();

@@ -19,20 +19,20 @@ public class ServerSalon implements Runnable{
     }
     
     public void abrirConexion(){
-		System.out.println(" Esperando cliente... ");
+		//System.out.println(" Esperando cliente... ");
         try{
             server = new ServerSocket(7777);
             client = server.accept();
             ObjectOutputStream os = new ObjectOutputStream(client.getOutputStream());
             input = new ObjectInputStream(client.getInputStream());
             //str = (String)input.readObject();
-            System.out.println("clienteCocina conectado");
+            //System.out.println("clienteCocina conectado");
             while(true) {
             	//m = (Mensaje)input.readObject();
-            	int s = (int)input.readObject();
-            	this.alistarOrden(s);
+            	int numMesa = (int)input.readObject();
+            	this.alistarOrden(numMesa);
             	//this.agregarOrden(s);
-            	System.out.println("Devuelta Orden Mesa " + s);
+            	this.ordenRecibida(numMesa);
             	//m = new Mensaje();
             	//m.set(s,0);
             	/*if (s.compareTo("a") == 0) {
@@ -66,6 +66,12 @@ public class ServerSalon implements Runnable{
             System.out.println(e);
         }
     }
+    
+    public void ordenRecibida(int pNumMesa) {
+		System.out.println("--------------------------");
+		System.out.println("Devuelta Orden Mesa " + pNumMesa);
+		System.out.println("--------------------------");
+	}
     
     public void alistarOrden(int pNumMesa) {
     	for(int i = 0; i < this.salon.mesas.size(); i++) {

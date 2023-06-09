@@ -19,6 +19,7 @@ public class Orden {
 		BurgerFactory hamburguesaOrdenada = new BurgerFactory();
 		this.setHamburguesa(hamburguesaOrdenada.crearBurger(pOrden, specs));
 		this.setPrecio(this.getHamburguesa().precio);
+		System.out.println("ORDEN MESA " + this.getNumMesa());
 		this.hamburguesa.printDatosBurger();
 		return this;
 	}
