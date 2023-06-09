@@ -2,11 +2,8 @@ package simulacion;
 
 public class Simulacion extends Thread {
 	
-	private Orden orden;
-	
 	public Simulacion() {
 		
-		this.orden = new Orden();
 		start();
 		
 	}
@@ -16,6 +13,7 @@ public class Simulacion extends Thread {
 		while(true) {
         	try {
         		
+        		Orden orden = new Orden();
         		orden.burger = orden.generarOrden();
             	// enviar orden
             
