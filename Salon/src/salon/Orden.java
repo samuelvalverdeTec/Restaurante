@@ -3,8 +3,7 @@ package salon;
 import java.util.ArrayList;
 
 public class Orden {
-	
-	//private int numOrden;
+	private int numOrden;
 	private int numMesa;
 	//public ArrayList<Burger> hamburguesas;
 	private Burger hamburguesa;
@@ -19,7 +18,6 @@ public class Orden {
 		BurgerFactory hamburguesaOrdenada = new BurgerFactory();
 		this.setHamburguesa(hamburguesaOrdenada.crearBurger(pOrden, specs));
 		this.setPrecio(this.getHamburguesa().precio);
-		System.out.println("ORDEN MESA " + this.getNumMesa());
 		this.hamburguesa.printDatosBurger();
 		return this;
 	}
@@ -49,5 +47,4 @@ public class Orden {
 		return this.lista;
 	}
 
-	
 }

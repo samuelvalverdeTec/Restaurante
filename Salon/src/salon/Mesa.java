@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-//import javax.swing.JPanel;
+import javax.swing.JPanel;
 
 import javax.swing.JOptionPane;
 
@@ -16,15 +16,14 @@ public class Mesa implements ActionListener{
 	public boolean abierta = false;
 	public boolean desplegado = false;
 	private boolean ocupada = false;
-	public boolean enviar = false;
-	private Orden orden = null;
+	private Orden orden;
 	public JButton boton;
 	public JButton botonOrdenar;
 	public JButton botonFacturar;
 	
 	public Mesa(int pNumMesa) {
 		this.setNumMesa(pNumMesa);
-		//this.setOrden(new Orden(this.getNumMesa()));
+		this.setOrden(new Orden(this.getNumMesa()));
 		this.boton = new JButton("Mesa: " + this.getNumMesa());
 		//this.boton.addActionListener(this);
         //this.boton.setActionCommand("abrir");
@@ -57,65 +56,28 @@ public class Mesa implements ActionListener{
 		else {
 			this.boton.setBackground(Color.GREEN);
 		}
-		/*if(this.getOrden().getLista()) {
-			this.botonFacturar.setBackground(Color.GREEN);
-		}
-		else {
-			this.botonFacturar.setBackground(Color.RED);
-		}*/
 	}
 	
 	public void ordenar() {
 		this.setOcupada(true);
-		Orden ordenAct = new Orden(this.getNumMesa());
 		ArrayList<String> specs = new ArrayList<String>();
 		String ingrediente = "";
-		String orden = "";
-		orden = JOptionPane.showInputDialog(null, "Hamburguesa a ordenar: ", "Orden Mesa " + this.getNumMesa(), 1);
+		String orden = JOptionPane.showInputDialog(null, "Hamburguesa a ordenar: ", "Orden Mesa " + this.getNumMesa(), 1);
 		//System.out.println(orden);
 		for(int i = 0; i < 3; i++) {
 			ingrediente = JOptionPane.showInputDialog(null, "Ingrediente extra: ", "Ingredientes", 1);
 			//System.out.println(ingrediente);
 			specs.add(ingrediente);
 		}
-		this.setOrden(ordenAct.crearOrden(orden, specs));
-		this.enviar = true;
 		//String ingrediente = JOptionPane.showInputDialog(null, "Ingrediente extra: ", "Ingredientes", 1);
-		/*if(orden == "Basica") {
-			this.setOrden(ordenAct.crearOrden(orden, specs));
-		}
-		else if(orden == "POO") {
-			this.setOrden(ordenAct.crearOrden(orden, specs));
-		}
-		else if(orden == "Triple con Bacon") {
-			this.setOrden(ordenAct.crearOrden(orden, specs));
-		}
-		else if(orden == "Swiss") {
-			this.setOrden(ordenAct.crearOrden(orden, specs));
-		}
-		else if(orden == "Hot Chicken") {
-			this.setOrden(ordenAct.crearOrden(orden, specs));
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "Esta hamburguesa no se ofrece", "Orden Mesa " + this.getNumMesa(), 1, null);
-		}*/
-		//System.out.println("se crea bien la orden");
+		this.setOrden(this.getOrden().crearOrden(orden, specs));
+		
 	}
 	
 	public void facturar() {
-		if(this.getOrden() != null) {
-			if(this.getOrden().getLista()) {
-				this.setOcupada(false);
-				JOptionPane.showMessageDialog(null, "Precio total de la orden: " + this.orden.getPrecio(), "Factura Mesa " + this.getNumMesa(), 1, null);
-				this.setOrden(null);
-			}
-			else {
-				JOptionPane.showMessageDialog(null, "La orden no está lista todavía", "Factura Mesa " + this.getNumMesa(), 1, null);
-			}
-		}
-		else {
-			JOptionPane.showMessageDialog(null, "Esta mesa no ha ordenado nada", "Factura Mesa " + this.getNumMesa(), 1, null);
-		}
+		this.setOcupada(false);
+		this.setOrden(null);
+		JOptionPane.showMessageDialog(null, "Precio total de la orden: " + this.orden.getPrecio(), "Factura Mesa " + this.getNumMesa(), 1, null);
 	}
 
 	
