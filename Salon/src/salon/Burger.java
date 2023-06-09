@@ -47,5 +47,14 @@ public class Burger {
 		System.out.println(datos);
 		
 	}
+	
+	public void printDatosBurger2() {
+		System.out.println(" Hamburguesa " + this.nombre);
+		System.out.println(" --ingredientes extra--");
+		System.out.println("  1. " + this.ingredientes.get(0));
+		System.out.println("  2. " + this.ingredientes.get(1));
+		System.out.println("  3. " + this.ingredientes.get(2));
+		System.out.println("_________________________________________________");
+	}
 
 }

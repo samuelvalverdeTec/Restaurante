@@ -1,22 +1,22 @@
-package salon;
+package cocina;
 
 public class Controller {
-	
-	public Salon salon;
+
+	public Cocina cocina;
 	public Interfaz interfaz;
-	public ClientSalon cliente;
-	public ServerSalon server;
+	public ServerCocina server;
+	public ClientCocina cliente;
 	
 	public Controller() {
-		this.salon = new Salon();
-		this.interfaz = new Interfaz(this.salon);
-		this.cliente = new ClientSalon(this.salon);
-		this.server = new ServerSalon(this.salon);
-		Thread threadCliente = new Thread(cliente);
+		this.cocina = new Cocina();
+		this.interfaz = new Interfaz(this.cocina);
+		this.server = new ServerCocina(this.cocina);
+		this.cliente = new ClientCocina(this.cocina);
 		Thread threadServidor = new Thread(server);
+		Thread threadCliente = new Thread(cliente);
 		threadServidor.start();
-		threadCliente.start();		
-		simulacion();	
+		threadCliente.start();
+		simulacion();
 	}
 	
 	public void simulacion() {
@@ -27,5 +27,5 @@ public class Controller {
 			interfaz.refrescar();
 		}
 	}
-
+	
 }
