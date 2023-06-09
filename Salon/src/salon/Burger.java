@@ -22,9 +22,11 @@ public class Burger {
 	
 	public Burger(ArrayList<String> specs) {
 		
+		/*this.ingredientes.add(specs.get(rand.nextInt(1, 7)));
 		this.ingredientes.add(specs.get(rand.nextInt(1, 7)));
-		this.ingredientes.add(specs.get(rand.nextInt(1, 7)));
-		this.ingredientes.add(specs.get(rand.nextInt(1, 7)));
+		this.ingredientes.add(specs.get(rand.nextInt(1, 7)));*/
+		
+		this.ingredientes = specs;
 		
 	}
 	
