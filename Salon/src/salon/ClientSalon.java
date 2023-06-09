@@ -1,40 +1,39 @@
-package cocina;
+package salon;
 
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
-
-public class ClientCocina implements Runnable{
+public class ClientSalon implements Runnable{
 	
-	Cocina cocina;
+	Salon salon;
 	
 	Socket client;
     ObjectOutputStream output;
-    
-    public ClientCocina(Cocina pCocina) {
-    	this.cocina = pCocina;
-    }
-    
-    public void conectar(){
+	
+	public ClientSalon(Salon pSalon) {
+		//conectar();
+		this.salon = pSalon;
+	}
+	
+	public void conectar(){
         String str;
         int numMesa;
         //Orden ordenAct;
-        Orden ordenAct = null;
+        Mesa mesaAct = null;
         try{
-            client = new Socket("127.0.0.1", 7777);
+            client = new Socket("127.0.0.1", 5555);
             output = new ObjectOutputStream(client.getOutputStream());
             //output.writeObject(str);
             while(true) { 
-            	for(int i = 0; i < this.cocina.ordenes.size(); i++) {
-            		ordenAct = this.cocina.ordenes.get(i);
-                	if(ordenAct.ready) {
-                		numMesa = ordenAct.getNumMesa();
+            	for(int i = 0; i < this.salon.mesas.size(); i++) {
+            		mesaAct = this.salon.mesas.get(i);
+                	if(mesaAct.enviar) {
+                		numMesa = mesaAct.getNumMesa();
                 		//ordenAct = mesaAct.getOrden();
                 		output.writeObject(numMesa);
                 		//output.writeObject(ordenAct);
                         output.flush();
-                        ordenAct.ready = false;
-                        //ordenAct.existe = false;
+                        mesaAct.enviar = false;
                 	}
             	}
             	/*if(boton.activo != m.estado) {

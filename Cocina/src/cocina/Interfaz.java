@@ -8,7 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-public class Interfaz implements ActionListener {
+
+public class Interfaz implements /*ActionListener,*/ Constants {
 
 	JFrame frame;
 	JPanel panel;
@@ -18,12 +19,12 @@ public class Interfaz implements ActionListener {
 	public Interfaz(Cocina c) {
 		
 		this.cocina = c;
-		this.ordenes = new JButton[cocina.ordenes.size()][1];
+		this.ordenes = new JButton[CANTIDAD_ORDENES][1];
 		
 		this.frame = new JFrame("Cocina");
 		this.panel = new JPanel();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
-		panel.setLayout(new GridLayout(cocina.ordenes.size(), 1));
+		panel.setLayout(new GridLayout(CANTIDAD_ORDENES, 1));
 		
 		for(int f = 0; f < cocina.ordenes.size(); f++){
             JButton orden = cocina.ordenes.get(f).botonOrden;
@@ -31,6 +32,7 @@ public class Interfaz implements ActionListener {
             panel.add(orden);
 	    }
 		
+		frame.add(panel);
 		frame.pack();
 	    frame.setVisible(true);
 	    
@@ -39,18 +41,18 @@ public class Interfaz implements ActionListener {
 		
 	}
 	
-	public void refrescar() {/*
-		Mesa mesaAct = null;
-		for(int f = 0; f < salon.mesas.size(); f++){
-        	mesaAct = salon.mesas.get(f);
-        	mesaAct.refrescar(panel);
-	    }*/
+	public void refrescar() {
+		Orden ordenAct = null;
+		for(int f = 0; f < cocina.ordenes.size(); f++){
+			ordenAct = cocina.ordenes.get(f);
+			ordenAct.refrescar(/*panel*/);
+	    }
 	}
 
-	@Override
+	/*@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 	
 }

@@ -4,10 +4,18 @@ public class Controller {
 
 	public Cocina cocina;
 	public Interfaz interfaz;
+	public ServerCocina server;
+	public ClientCocina cliente;
 	
 	public Controller() {
 		this.cocina = new Cocina();
 		this.interfaz = new Interfaz(this.cocina);
+		this.server = new ServerCocina(this.cocina);
+		this.cliente = new ClientCocina(this.cocina);
+		Thread threadServidor = new Thread(server);
+		Thread threadCliente = new Thread(cliente);
+		threadServidor.start();
+		threadCliente.start();
 		simulacion();
 	}
 	

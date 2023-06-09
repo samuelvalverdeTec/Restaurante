@@ -1,27 +1,27 @@
-package cocina;
+package salon;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ServerCocina implements Runnable{
 
-	Cocina cocina;
+public class ServerSalon implements Runnable{
+	
+	Salon salon;
 	
 	Socket client;
     ServerSocket server;
     ObjectInputStream input;
-	
-	public ServerCocina(Cocina pCocina){
-		//abrirConexion();
-		this.cocina = pCocina;
+    
+    public ServerSalon(Salon pSalon) {
+    	this.salon = pSalon;
     }
-	
-	public void abrirConexion(){
-		//System.out.println(" Esperando cliente... ");
+    
+    public void abrirConexion(){
+		System.out.println(" Esperando cliente... ");
         try{
-            server = new ServerSocket(5555);
+            server = new ServerSocket(7777);
             client = server.accept();
             ObjectOutputStream os = new ObjectOutputStream(client.getOutputStream());
             input = new ObjectInputStream(client.getInputStream());
@@ -29,8 +29,9 @@ public class ServerCocina implements Runnable{
             while(true) {
             	//m = (Mensaje)input.readObject();
             	int s = (int)input.readObject();
-            	this.agregarOrden(s);
-            	//System.out.println("Orden Mesa " + s);
+            	this.alistarOrden(s);
+            	//this.agregarOrden(s);
+            	System.out.println("Devuelta Orden Mesa " + s);
             	//m = new Mensaje();
             	//m.set(s,0);
             	/*if (s.compareTo("a") == 0) {
@@ -64,19 +65,18 @@ public class ServerCocina implements Runnable{
             System.out.println(e);
         }
     }
-	
-	public void agregarOrden(int pNumMesa) {
-		for(int i = 0; i < this.cocina.ordenes.size(); i++) {
-			Orden ordenAct = this.cocina.ordenes.get(i);
-			if(pNumMesa == ordenAct.getNumMesa()) {
-				ordenAct.existe = true;
-			}
-		}
-		//orden.mostrarInfo();
-	}
-	
-	public void run() {
+    
+    public void alistarOrden(int pNumMesa) {
+    	for(int i = 0; i < this.salon.mesas.size(); i++) {
+    		Mesa mesaAct = this.salon.mesas.get(i);
+    		if(pNumMesa == mesaAct.getNumMesa()) {
+    			mesaAct.getOrden().setLista(true);
+    		}
+    	}
+    }
+    
+    public void run() {
 		abrirConexion();
 	}
-	
+
 }
