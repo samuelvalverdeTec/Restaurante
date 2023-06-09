@@ -3,7 +3,8 @@ package salon;
 import java.util.ArrayList;
 
 public class Orden {
-	private int numOrden;
+	
+	//private int numOrden;
 	private int numMesa;
 	//public ArrayList<Burger> hamburguesas;
 	private Burger hamburguesa;
@@ -47,4 +48,5 @@ public class Orden {
 		return this.lista;
 	}
 
+	
 }
