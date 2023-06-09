@@ -14,8 +14,8 @@ public class Controller {
 		this.server = new ServerSalon(this.salon);
 		Thread threadCliente = new Thread(cliente);
 		Thread threadServidor = new Thread(server);
-		threadCliente.start();
 		threadServidor.start();
+		threadCliente.start();		
 		simulacion();	
 	}
 	

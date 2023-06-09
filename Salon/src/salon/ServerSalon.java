@@ -26,6 +26,7 @@ public class ServerSalon implements Runnable{
             ObjectOutputStream os = new ObjectOutputStream(client.getOutputStream());
             input = new ObjectInputStream(client.getInputStream());
             //str = (String)input.readObject();
+            System.out.println("clienteCocina conectado");
             while(true) {
             	//m = (Mensaje)input.readObject();
             	int s = (int)input.readObject();

@@ -21,7 +21,17 @@ public class ClientSalon implements Runnable{
         //Orden ordenAct;
         Mesa mesaAct = null;
         try{
-            client = new Socket("127.0.0.1", 5555);
+        	while(true) {
+        		try {
+        			client = new Socket("127.0.0.1", 5555);
+        			break;
+        		}
+        		catch(Exception e) {
+        			//System.out.println(e);
+                    Thread.sleep(2000);
+        		}
+        	}
+            //client = new Socket("127.0.0.1", 5555);
             output = new ObjectOutputStream(client.getOutputStream());
             //output.writeObject(str);
             while(true) { 

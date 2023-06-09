@@ -21,7 +21,17 @@ public class ClientCocina implements Runnable{
         //Orden ordenAct;
         Orden ordenAct = null;
         try{
-            client = new Socket("127.0.0.1", 7777);
+        	while(true) {
+        		try {
+        			client = new Socket("127.0.0.1", 7777);
+        			break;
+        		}
+        		catch(Exception e){
+                    //System.out.println(e);
+                    Thread.sleep(2000);
+                }
+        	}
+            //client = new Socket("127.0.0.1", 7777);
             output = new ObjectOutputStream(client.getOutputStream());
             //output.writeObject(str);
             while(true) { 
